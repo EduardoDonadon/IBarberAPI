@@ -6,6 +6,8 @@ import cors from 'cors';
 
 import '@shared/infra/typeorm';
 
+import '@shared/providers';
+
 import { routes } from './routes';
 
 const app = express();
