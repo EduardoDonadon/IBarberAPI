@@ -1,4 +1,4 @@
-import { getRepository, NamingStrategyNotFoundError, Repository } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import { ICreateUserDTO } from '@modules/users/dtos/ICreateUserDTO';
 import { IUsersRepository } from '@modules/users/iRepositories/IUsersRepository';
