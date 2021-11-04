@@ -6,6 +6,9 @@ import { UsersRepository } from '@modules/users/infra/typeorm/repositories/Users
 import { ISchedulesRepository } from '@modules/schedules/iRepositories/ISchedulesRepository';
 import { SchedulesRepository } from '@modules/schedules/infra/typeorm/repositories/SchedulesRepository';
 
+import { IAppointmentsRepository } from '@modules/appointments/iRepositories/IAppointmentsRepository';
+import { AppointmentsRepository } from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository
@@ -14,4 +17,9 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<ISchedulesRepository>(
   'SchedulesRepository',
   SchedulesRepository
+)
+
+container.registerSingleton<IAppointmentsRepository>(
+  'AppointmentsRepository',
+  AppointmentsRepository
 )
