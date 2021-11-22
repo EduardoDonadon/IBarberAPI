@@ -10,7 +10,7 @@ export class ListAllBarbersService {
   ) {}
 
   async execute() {
-    const barbers = this.usersRepository.findBarbers();
+    const barbers = await this.usersRepository.findBarbers();
     
     return barbers;
   }

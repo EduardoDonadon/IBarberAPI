@@ -22,6 +22,9 @@ class Schedule {
   @Column()
   barber_id: string;
 
+  @Column()
+  available: boolean;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: 'barber_id' })
   barber: User;

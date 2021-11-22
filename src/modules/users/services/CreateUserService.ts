@@ -39,7 +39,7 @@ export class CreateUserService {
       barberFormatted = true;
     }
 
-    const user = this.usersRepository.create({
+    const user = await this.usersRepository.create({
       name,
       email,
       cpf,

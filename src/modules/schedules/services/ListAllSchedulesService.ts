@@ -10,7 +10,7 @@ export class ListAllSchedulesService {
   ) {}
 
   async execute() {
-    const schedules = this.schedulesRepository.findAll();
+    const schedules = await this.schedulesRepository.findAll();
     
     return schedules;
   }

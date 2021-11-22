@@ -2,24 +2,16 @@ import { injectable, inject } from 'tsyringe';
 
 import { ISchedulesRepository } from '@modules/schedules/iRepositories/ISchedulesRepository';
 
-interface IResquest {
-  barber_id: string;
-  date: Date;
-}
-
 @injectable()
-export class CreateScheduleService {
+export class ListSchedulesByBarberService {
   constructor(
     @inject('SchedulesRepository')
     private schedulesRepository: ISchedulesRepository
   ) {}
 
-  async execute({barber_id, date}: IResquest) {
-    const schedule = await this.schedulesRepository.create({
-      barber_id,
-      date
-    })
+  async execute(barber_id: string) {
+    const schedules = await this.schedulesRepository.findByBarberId(barber_id);
     
-    return schedule;
+    return schedules;
   }
 }

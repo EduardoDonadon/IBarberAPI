@@ -11,6 +11,18 @@ class SchedulesRepository implements ISchedulesRepository {
   constructor() {
     this.ormRepository = getRepository(Schedule);
   }
+  
+  public async findByBarberId(barber_id: string): Promise<Schedule[]> {
+    const schedules = await this.ormRepository.find({ where: { barber_id } });
+
+    return schedules;
+  }
+
+  public async findById(id: string): Promise<Schedule | undefined> {
+    const schedule = await this.ormRepository.findOne(id);
+
+    return schedule;
+  }
 
   public async findAll(): Promise<Schedule[]> {
     const schedules = await this.ormRepository.find();
@@ -24,6 +36,10 @@ class SchedulesRepository implements ISchedulesRepository {
     await this.ormRepository.save(schedule);
 
     return schedule;
+  }
+
+  public async save(schedule: Schedule): Promise<Schedule> {
+    return this.ormRepository.save(schedule);
   }
 }
 
