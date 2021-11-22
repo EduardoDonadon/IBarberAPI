@@ -12,6 +12,12 @@ class AppointmentsRepository implements IAppointmentsRepository {
     this.ormRepository = getRepository(Appointment);
   }
 
+  public async findByClientId(client_id: string): Promise<Appointment[]> {
+    const appointments = await this.ormRepository.find({ where: { client_id } });
+
+    return appointments;
+  }
+
   public async create(appointmentData: ICreateAppointmentDTO): Promise<Appointment> {
     const appointment = this.ormRepository.create(appointmentData);
 

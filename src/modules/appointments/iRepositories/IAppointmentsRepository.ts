@@ -3,4 +3,5 @@ import { Appointment } from "@modules/appointments/infra/typeorm/entities/Appoin
 
 export interface IAppointmentsRepository {
   create(data: ICreateAppointmentDTO): Promise<Appointment>
+  findByClientId(client_id: string): Promise<Appointment[]>;
 }
