@@ -6,7 +6,9 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Exclude, Expose } from 'class-transformer';
 
+import uploadConfig from '@config/storage';
 @Entity("users")
 class User {
   @PrimaryColumn()
@@ -25,6 +27,10 @@ class User {
   barber: boolean;
   
   @Column()
+  avatar: string;
+
+  @Column()
+  @Exclude()
   password: string;
 
   @CreateDateColumn()
@@ -32,6 +38,20 @@ class User {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @Expose({ name: 'avatar_url' })
+  getAvatarUrl(): string | null {
+    if (!this.avatar) {
+      return null;
+    }
+
+    switch (uploadConfig.driver) {
+      case 'disk':
+        return `http://localhost:3333/files/${this.avatar}`;
+      default:
+        return null;
+    }
+  }
 
   constructor() {
     if (!this.id) {

@@ -9,6 +9,9 @@ import { SchedulesRepository } from '@modules/schedules/infra/typeorm/repositori
 import { IAppointmentsRepository } from '@modules/appointments/iRepositories/IAppointmentsRepository';
 import { AppointmentsRepository } from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 
+
+import './StorageProvider';
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { instanceToInstance } from 'class-transformer';
 
 import { CreateUserService } from '@modules/users/services/CreateUserService';
 
@@ -11,6 +12,6 @@ export class CreateUserController {
 
     const user = await createUserService.execute({ name, email, cpf, password, barber });
 
-    return response.json(user);
+    return response.json(instanceToInstance(user));
   }
 }
