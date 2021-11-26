@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { instanceToInstance } from 'class-transformer';
 
 import { ListCutsByBarberIdService } from '@modules/cuts/services/ListCutsByBarberIdService';
 
@@ -11,6 +12,6 @@ export class ListCutsByBarberIdController {
     
     const cuts = await listCutsByBarberIdService.execute(barber_id);
 
-    return response.json(cuts);
+    return response.json(instanceToInstance(cuts));
   }
 }
