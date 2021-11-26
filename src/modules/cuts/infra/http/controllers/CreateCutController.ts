@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { instanceToInstance } from 'class-transformer';
 
 import { CreateCutService } from '@modules/cuts/services/CreateCutService';
 
@@ -14,6 +15,6 @@ export class CreateCutController {
       cut_photo: request.file.filename,
     });
 
-    return response.json(cut);
+    return response.json(instanceToInstance(cut));
   }
 }
