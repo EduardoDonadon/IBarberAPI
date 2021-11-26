@@ -9,6 +9,9 @@ import { SchedulesRepository } from '@modules/schedules/infra/typeorm/repositori
 import { IAppointmentsRepository } from '@modules/appointments/iRepositories/IAppointmentsRepository';
 import { AppointmentsRepository } from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 
+import { ICutsRepository } from '@modules/cuts/iRepositories/ICutsRepository';
+import { CutsRepository } from '@modules/cuts/infra/typeorm/repositories/CutsRepository';
+
 
 import './StorageProvider';
 
@@ -25,4 +28,9 @@ container.registerSingleton<ISchedulesRepository>(
 container.registerSingleton<IAppointmentsRepository>(
   'AppointmentsRepository',
   AppointmentsRepository
+)
+
+container.registerSingleton<ICutsRepository>(
+  'CutsRepository',
+  CutsRepository
 )
