@@ -25,7 +25,7 @@ class Schedule {
   @Column()
   available: boolean;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, { eager: true })
   @JoinColumn({ name: 'barber_id' })
   barber: User;
 

@@ -1,6 +1,7 @@
 
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { instanceToInstance } from 'class-transformer';
 
 import { ListAppointmentsByClientId } from '@modules/appointments/services/ListAppointmentsByClientId';
 
@@ -12,6 +13,6 @@ export class ListAppointmentsByClientIdController {
     
     const appointments = await listAppointmentsByClientId.execute(client_id);
 
-    return response.json(appointments);
+    return response.json(instanceToInstance(appointments));
   }
 }
