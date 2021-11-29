@@ -3,6 +3,9 @@ import { container }from 'tsyringe';
 import { IUsersRepository } from '@modules/users/iRepositories/IUsersRepository';
 import { UsersRepository } from '@modules/users/infra/typeorm/repositories/UsersRepository';
 
+import { IAddressesRepository } from '@modules/users/iRepositories/IAddressesRepository';
+import { AddressesRepository } from '@modules/users/infra/typeorm/repositories/AddressesRepository';
+
 import { ISchedulesRepository } from '@modules/schedules/iRepositories/ISchedulesRepository';
 import { SchedulesRepository } from '@modules/schedules/infra/typeorm/repositories/SchedulesRepository';
 
@@ -13,7 +16,13 @@ import { ICutsRepository } from '@modules/cuts/iRepositories/ICutsRepository';
 import { CutsRepository } from '@modules/cuts/infra/typeorm/repositories/CutsRepository';
 
 
+
 import './StorageProvider';
+
+container.registerSingleton<IAddressesRepository>(
+  'AddressesRepository',
+  AddressesRepository
+)
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',

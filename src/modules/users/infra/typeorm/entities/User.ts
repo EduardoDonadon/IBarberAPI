@@ -4,11 +4,14 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Exclude, Expose } from 'class-transformer';
 
 import uploadConfig from '@config/storage';
+import { Address } from "./Address";
 @Entity("users")
 class User {
   @PrimaryColumn()
@@ -32,6 +35,14 @@ class User {
   @Column()
   @Exclude()
   password: string;
+
+  @Column()
+  address_id: string;
+
+  @OneToOne(() => Address, { eager: true })
+  @JoinColumn({ name: 'address_id' })
+  address: Address;
+
 
   @CreateDateColumn()
   created_at: Date;
