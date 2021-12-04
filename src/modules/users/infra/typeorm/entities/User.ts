@@ -24,7 +24,7 @@ class User {
   email: string;
 
   @Column()
-  cpf: number;
+  cpf: string;
 
   @Column()
   barber: boolean;

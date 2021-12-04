@@ -7,7 +7,7 @@ import { IAddressesRepository } from '../iRepositories/IAddressesRepository';
 interface IResquest {
   name: string;
   email: string;
-  cpf: number;
+  cpf: string;
   password: string;
   barber?: boolean;
   address: {
